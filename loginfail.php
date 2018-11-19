@@ -70,7 +70,7 @@
 				<h4 align="center" style="border-bottom: 1px solid green; padding: 10px;">Login Here</h4>
 				<div class="form mt-4">
 					<p class="bg-danger text-white" style="border-radius: 5px; text-align: center">Invalid Username or Password</p>
-					<form class="" action="dashboard.php" method="post">
+					<form class="" action="request.php" method="get">
 						<label>Username:</label>
 						<input  class="form-control" type="text" name="username" placeholder="Matric No" name="">
 						<label>Password:</label>

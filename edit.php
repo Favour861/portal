@@ -93,7 +93,7 @@
 						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="fee.png" width="25px" style="margin-right: 10px">Tuition fee</a></h6>
 						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="receipt.png" width="25px" style="margin-right: 10px">Receipt</a></h6>
 						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="result.png" width="25px" style="margin-right: 10px">CGPA</a></h6>
-						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href="changepassword.php"><img src="pwd.png" width="25px" style="margin-right: 10px">Change Password</a></h6>
+						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="pwd.png" width="25px" style="margin-right: 10px">Change Password</a></h6>
 						<h6 style=""><a href="login.php"><img src="signout.png" width="25px" style="margin-right: 10px">Sign Out</a></h6>
 					</div>
 				</div>
@@ -102,37 +102,47 @@
 				<div><span id="toggler" style="color: green; font-size: 30pt; cursor: pointer">&#8801;</span>
 				</div>
 				<div class="form">
+				<form action="editor.php" method="get">
 				<h5>Personal Information</h5>
 					<div class="row mt-3">
 						<div class="col-6">
-							<label>Full Name:</label>
-							<input class="form-control" type="text" disabled name="" id="fullname" style="width: 100%" id="fullname">
+							<label>Full Name:</label><br>
+							<input class="form" type="text" id="lname" name="lname" style="width: 32.5%; border-radius: 3px; border: 1px solid lightgrey; height: 40px; padding-left: 10px" placeholder="Last name">
+							<input class="form" type="text" id="fname" name="fname" style="width: 32.5%; border-radius: 3px; border: 1px solid lightgrey; height: 40px; padding-left: 10px" placeholder="First name">
+							<input class="form" type="text" id="mname" name="mname" style="width: 32.5%; border-radius: 3px; border: 1px solid lightgrey; height: 40px; padding-left: 10px" placeholder="Middle name"><br>
 							<label>Gender:</label>
-							<input class="form-control" type="text" disabled name="" id="gdr" style="width: 100%">
+							<input class="form-control" type="text" name="gdr" id="gdr" style="width: 100%">
 						</div>
 						<div class="col-6">
 							<label>Date of Birth:</label>
-							<input class="form-control" type="text" disabled name="" id="dob" style="width: 100%">
+							<input class="form-control" type="text" name="dob" id="dob" style="width: 100%">
 							<label>Username on Portal:</label>
-							<input class="form-control" type="text" disabled name="" style="width: 100%" id="user">
+							<input class="form-control" type="text" style="width: 100%" id="user" name="user">
 						</div>
 					</div>
 				<h5 class="mt-3">Educational Information</h5>
 					<div class="row mt-3">
 						<div class="col-6">
 							<label>Matric Number:</label>
-							<input class="form-control" type="text" disabled name="" id="mat" style="width: 100%">
+							<input class="form-control" type="text" name="mat" id="mat" disabled style="width: 100%">
 							<label>Current Level:</label>
-							<input class="form-control" type="text" disabled name="" id="lvl" value="100" style="width: 100%">
+							<input class="form-control" type="text" name="lvl" disabled value="100" style="width: 100%">
 						</div>
 						<div class="col-6">
 							<label>Faculty:</label>
-							<input class="form-control" type="text" disabled name="" id="fac" style="width: 100%">
+							<input class="form-control" type="text" name="fac" id="fac" disabled style="width: 100%">
 							<label>Depatment:</label>
-							<input class="form-control" type="text" disabled name="" id="dept" style="width: 100%">
+							<input class="form-control" type="text" name="dept" id="dept" disabled style="width: 100%">
 						</div>
 					</div>
+					<div class="row">
+					<div class="col-12 mt-5" style="text-align: center;">
+					<button class="btn btn-success" style="width: 20%">Submit</button>
+					</div>
+					</div>
+				</form>
 				</div>
+
 			</div>
 		</div>
 	</div>
@@ -153,8 +163,10 @@
 			$fac=$col['faculty'];
 			$dept=$col['dept'];
 		}
-		echo "<script>fullname.value='".$lname.' '.$fname.' '.$mname."'</script>";
 		echo "<script>user.value='".$session."'</script>";
+		echo "<script>lname.value='".$lname."'</script>";
+		echo "<script>fname.value='".$fname."'</script>";
+		echo "<script>mname.value='".$mname."'</script>";
 		echo "<script>gdr.value='".$gdr."'</script>";
 		echo "<script>dob.value='".$dob."'</script>";
 		echo "<script>mat.value='".$number."'</script>";

@@ -93,7 +93,7 @@
 						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="fee.png" width="25px" style="margin-right: 10px">Tuition fee</a></h6>
 						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="receipt.png" width="25px" style="margin-right: 10px">Receipt</a></h6>
 						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="result.png" width="25px" style="margin-right: 10px">CGPA</a></h6>
-						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href="changepassword.php"><img src="pwd.png" width="25px" style="margin-right: 10px">Change Password</a></h6>
+						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="pwd.png" width="25px" style="margin-right: 10px">Change Password</a></h6>
 						<h6 style=""><a href="login.php"><img src="signout.png" width="25px" style="margin-right: 10px">Sign Out</a></h6>
 					</div>
 				</div>
@@ -102,36 +102,28 @@
 				<div><span id="toggler" style="color: green; font-size: 30pt; cursor: pointer">&#8801;</span>
 				</div>
 				<div class="form">
-				<h5>Personal Information</h5>
+					<form action="pwdchange.php" method="get">
 					<div class="row mt-3">
 						<div class="col-6">
-							<label>Full Name:</label>
-							<input class="form-control" type="text" disabled name="" id="fullname" style="width: 100%" id="fullname">
-							<label>Gender:</label>
-							<input class="form-control" type="text" disabled name="" id="gdr" style="width: 100%">
+							<input type="hidden" name="nc" id="nc">
+							<label>Current Password:</label>
+							<input class="form-control" type="password" name="cp" style="width: 100%" >
+							<label>Reason for Changing:</label>
+							<input class="form-control" type="text" name="" id="rsn" style="width: 100%">
 						</div>
 						<div class="col-6">
-							<label>Date of Birth:</label>
-							<input class="form-control" type="text" disabled name="" id="dob" style="width: 100%">
-							<label>Username on Portal:</label>
-							<input class="form-control" type="text" disabled name="" style="width: 100%" id="user">
+							<label>New Password:</label>
+							<input class="form-control" type="password" name="newp" style="width: 100%">
+							<label>Confirm New Password:</label>
+							<input class="form-control" type="password" name="cnewp" style="width: 100%" >
 						</div>
 					</div>
-				<h5 class="mt-3">Educational Information</h5>
-					<div class="row mt-3">
-						<div class="col-6">
-							<label>Matric Number:</label>
-							<input class="form-control" type="text" disabled name="" id="mat" style="width: 100%">
-							<label>Current Level:</label>
-							<input class="form-control" type="text" disabled name="" id="lvl" value="100" style="width: 100%">
-						</div>
-						<div class="col-6">
-							<label>Faculty:</label>
-							<input class="form-control" type="text" disabled name="" id="fac" style="width: 100%">
-							<label>Depatment:</label>
-							<input class="form-control" type="text" disabled name="" id="dept" style="width: 100%">
-						</div>
+					<div class="row">
+					<div class="col-12 mt-5" style="text-align: center;">
+					<button class="btn btn-success" style="width: 20%">Submit</button>
 					</div>
+					</div>
+				</form>
 				</div>
 			</div>
 		</div>
@@ -140,7 +132,7 @@
 	if(isset($_SESSION['userlog'])){
 		$session = $_SESSION['userlog'];
 		$con = mysqli_connect("localhost","root","","portal");
-		$query = mysqli_query($con, "SELECT * from info_tb where username='$session' or id='$session'");
+		$query = mysqli_query($con, "SELECT * from info_tb where username='$session'or id='$session'");
 		$col="";
 		$lname="";
 		while($col=mysqli_fetch_array($query)){
@@ -161,6 +153,18 @@
 		echo "<script>fac.value='".$fac."'</script>";
 		echo "<script>dept.value='".$dept."'</script>";
 		echo "<script>dashname.innerHTML='".$lname.' '.$fname."'</script>";
+	}
+	else{
+		echo "<script>window.open('login.php','_self')</script>";
+	}
+
+
+?>
+
+<?php 
+	if(isset($_SESSION['userlog'])){
+		$session = $_SESSION['userlog'];
+		echo "<script>nc.value='".$session."'</script>";
 	}
 	else{
 		echo "<script>window.open('login.php','_self')</script>";

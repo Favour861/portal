@@ -77,7 +77,7 @@
 						<label>Firstname:</label>
 						<input  class="form-control" type="text" name="fname"  required placeholder="First Name">
 						<label>Middlename:</label>
-						<input class="form-control"  type="text" name="mname"  required placeholder="Middle Name">
+						<input class="form-control"  type="text" name="mname"  placeholder="Middle Name">
 						<label>Date of Birth:</label>
 						<input  class="form-control" type="date" name="dob">
 						<label>Gender:</label><br>

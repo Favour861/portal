@@ -70,7 +70,7 @@
 			<div class="col-md-3 offset-2" style="background: rgba(230,230,230,90%); margin-top: 100px; border-radius: 5px; padding-bottom: 20px;">
 				<h4 align="center" style="border-bottom: 1px solid green; padding: 10px;">Login Here</h4>
 				<div class="form mt-4">
-					<form class="" action="request.php" method="post">
+					<form class="" action="request.php" method="get">
 						<label>Username:</label>
 						<input  class="form-control" type="text" name="username" placeholder="Matric No" name="">
 						<label>Password:</label>

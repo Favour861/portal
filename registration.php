@@ -139,7 +139,7 @@
 	$dept = $_POST['dept'];
 	if(isset($_POST['lname'])){
 		echo "<script>body.style.display='block'</script>";
-		if($lname!==""&&$fname!==""&&$mname!==""&&$dob!==""&&$gdr!==""&&$user!==""&&$pwd!==""&&$cpwd!==""&&$faculty!==""&&$dept!==""){
+		if($lname!==""&&$fname!==""&&$dob!==""&&$gdr!==""&&$user!==""&&$pwd!==""&&$cpwd!==""&&$faculty!==""&&$dept!==""){
 		if($pwd==$cpwd){
 		$query=mysqli_query($con,"INSERT into info_tb (lastname,firstname,middlename,userdate,gender,userpix,username,password,faculty,dept) values ('$lname','$fname','$mname','$dob','$gdr','','$user','$pwd','$faculty','$dept')");}
 		else{

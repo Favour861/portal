@@ -1,4 +1,5 @@
 <?php session_start() ?>
+
 <!Doctype html>
 <html>
 <head>
@@ -14,6 +15,37 @@
 	<script>
 		
 	</script>
+	<?php 
+	if(isset($_GET['username'])){
+	$uname=$_GET['username'];
+	$pword=$_GET['password'];
+	$con = mysqli_connect("localhost","root","","portal");
+	$uselect = mysqli_query($con, "SELECT * from info_tb where username='$uname' or id='$uname'");
+	$s="";
+	$pw="";
+	$mat="";
+	while ($s=mysqli_fetch_array($uselect)){
+		$pw=$s['password'];
+		$mat=$s['id'];
+	}
+		if($pword==$pw&&$uname!==""){
+			$_SESSION['userlog']=$uname;
+			$_SESSION['userpass']=$pword;
+			// http_redirect('get', 'dashboard.php');
+			echo "<script>window.open('dashboard.php','_self')</script>";
+		}else if($uname==$mat&&$uname!==""&&$pword==$pw){
+			$_SESSION['userlog']=$uname;
+			$_SESSION['userpass']=$pword;
+			// http_redirect('get', 'dashboard.php');
+			echo "<script>window.open('dashboard.php','_self')</script>";
+		}
+		else{
+			echo "<script>window.open('loginfail.php','_self')</script>";
+		}
+	}else{
+		echo "<script>window.open('login.php','_self')</script>";
+	}
+?>
 	<style type="text/css">
 		body{
 			background: #E6E6FA;
@@ -71,11 +103,11 @@
 				<h4 align="center" style="border-bottom: 1px solid green; padding: 10px;">Login Here</h4>
 				<div class="form mt-4">
 					<p id="logfail" class="bg-danger text-white" style="display: none; text-align: center; border-radius: 3px;">Invalid Username or Password</p>
-					<form class="" action="dashboard.php" method="post">
+					<form class="" action="request.php" method="get">
 						<label>Username:</label>
-						<input  class="form-control" type="text" name="username" placeholder="Matric No" name="">
+						<input  class="form-control" type="text" name="username" placeholder="Matric No" value="<?php $uname ?>">
 						<label>Password:</label>
-						<input class="form-control"  type="Password" name="password" placeholder="password">
+						<input class="form-control"  type="Password" name="password" placeholder="password"  value="<?php $pword ?>">
 						<button class="btn btn-success mt-3" style="width: 100%">SIGN IN</button>
 						<p class="form-text" align="center">No account yet? Register <a href="register.php">here</a></p>
 					</form>
@@ -83,21 +115,5 @@
 			</div>
 		</div>
 	</div>
-<?php 
-	$uname=$_POST['username'];
-	$pword=$_POST['password'];
-	$con = mysqli_connect("localhost","root","","portal");
-	$uselect = mysqli_query($con, "SELECT password from info_tb where 'username'='$uname'");
-	if(isset($_POST['username'])){
-		if($pword==$uselect){
-			$_SESSION["userlog"]=$uname;
-			$_SESSION["userpass"]=$pword;
-		}else{
-			echo "<script>logfail.style.display='block';</script>";
-		}
-	}else{
-		echo "<script>window.open('login.php','_self')</script>";
-	}
-?>
 </body>
 </html>
