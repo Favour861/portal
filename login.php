@@ -61,18 +61,22 @@
 	</nav>
 	<div class="container-fluid" id="page-bound">
 		<div class="row">
-			<div class="col-md-6 pl-md-5 col-sm-12" style="font-family: Aharoni; padding-top: 100px; color: #D8D8D8; text-shadow: 2px 2px 5px green">
-				<h1>WELCOME TO</h1><br>
-				<h1>RUBY COLLEGE</h1><br>
+			<div class="col-md-6 pl-md-5 col-sm-12" style="font-family: Aharoni; padding-top: 100px; color: #D8D8D8; text-shadow: 2px 2px 5px green; margin-left: 70px">
+				<h1>WELCOME TO:</h1><br>
+				<h1>FAVOUR COLLEGE</h1><br>
 				<h1>OF ENVIRONMENTAL</h1><br>  
 				<h1>STUDIES</h1>
 			</div>
 			<div class="col-md-3 offset-2" style="background: rgba(230,230,230,90%); margin-top: 100px; border-radius: 5px; padding-bottom: 20px;">
 				<h4 align="center" style="border-bottom: 1px solid green; padding: 10px;">Login Here</h4>
 				<div class="form mt-4">
+					<?php if(isset($msg))
+					{ ?>
+					<p class="bg-danger text-white" style="border-radius: 5px; text-align: center"> <?php echo $msg ?></p>
+				<?php } ?>
 					<form class="" action="request.php" method="get">
 						<label>Username:</label>
-						<input  class="form-control" type="text" name="username" placeholder="Matric No" name="">
+						<input  class="form-control" type="text" name="username" placeholder="Username or Matric No" name="">
 						<label>Password:</label>
 						<input class="form-control"  type="Password" name="password" placeholder="password">
 						<button class="btn btn-success mt-3" style="width: 100%">SIGN IN</button>
@@ -82,17 +86,6 @@
 			</div>
 		</div>
 	</div>
-<?php
-	// $uname=$_POST['username'];
-	// $pword=$_POST['password'];
-	// $con = mysqli_connect("localhost","root","","portal");
-	// $uselect = mysqli_query($con, "SELECT password from info_tb where 'username'='$uname'");
-	// 	if($pword==$uselect){
-	// 		echo "<script>window.open('dashboard.php','_self')</script>";
-	// 	}else{
-	// 		echo "<script>window.open('request.php','_self')</script>";
-	// 	}
-	
-?>
+
 </body>
 </html>

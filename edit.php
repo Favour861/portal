@@ -70,7 +70,7 @@
 					<li class="nav-item pl-3"><a href="#" class="text-white">Take a tour</a></li>
 					<li class="nav-item pl-3"><a href="#" class="text-white">Courses Offered</a></li>
 					<li class="nav-item pl-3"><a href="#" class="text-white" style="opacity: 0.9;">Student's Portal</a></li>
-					<li class="nav-item" style="position: absolute;right: 100px"><a href="login.php" class="text-white">Sign Out</a></li>
+					<li class="nav-item" style="position: absolute;right: 100px"><a href="signout.php" class="text-white">Sign Out</a></li>
 				</ul>
 			</div>
 		</div>
@@ -93,42 +93,46 @@
 						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="fee.png" width="25px" style="margin-right: 10px">Tuition fee</a></h6>
 						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="receipt.png" width="25px" style="margin-right: 10px">Receipt</a></h6>
 						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="result.png" width="25px" style="margin-right: 10px">CGPA</a></h6>
-						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="pwd.png" width="25px" style="margin-right: 10px">Change Password</a></h6>
-						<h6 style=""><a href="login.php"><img src="signout.png" width="25px" style="margin-right: 10px">Sign Out</a></h6>
+						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href="changepassword.php"><img src="pwd.png" width="25px" style="margin-right: 10px">Change Password</a></h6>
+						<h6 style=""><a href="signout.php"><img src="signout.png" width="25px" style="margin-right: 10px">Sign Out</a></h6>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-10">
-				<div><span id="toggler" style="color: green; font-size: 30pt; cursor: pointer">&#8801;</span>
+				<div><span id="toggler" style="color: green; font-size: 30pt; cursor: pointer;user-select:none;-moz-user-select:none">&#8801;</span>
 				</div>
 				<div class="form">
 				<form action="editor.php" method="get">
 				<h5>Personal Information</h5>
 					<div class="row mt-3">
-						<div class="col-6">
+						<div class="col-md-6">
 							<label>Full Name:</label><br>
 							<input class="form" type="text" id="lname" name="lname" style="width: 32.5%; border-radius: 3px; border: 1px solid lightgrey; height: 40px; padding-left: 10px" placeholder="Last name">
 							<input class="form" type="text" id="fname" name="fname" style="width: 32.5%; border-radius: 3px; border: 1px solid lightgrey; height: 40px; padding-left: 10px" placeholder="First name">
 							<input class="form" type="text" id="mname" name="mname" style="width: 32.5%; border-radius: 3px; border: 1px solid lightgrey; height: 40px; padding-left: 10px" placeholder="Middle name"><br>
 							<label>Gender:</label>
 							<input class="form-control" type="text" name="gdr" id="gdr" style="width: 100%">
-						</div>
-						<div class="col-6">
 							<label>Date of Birth:</label>
 							<input class="form-control" type="text" name="dob" id="dob" style="width: 100%">
+						</div>
+						<div class="col-md-6">
+							<label>Phone Number:</label>
+							<input class="form-control" type="text" name="pn" id="upn" style="width: 100%">
+							<label>E-mail:</label>
+							<input class="form-control" type="text" name="em" id="uem" style="width: 100%">
 							<label>Username on Portal:</label>
 							<input class="form-control" type="text" style="width: 100%" id="user" name="user">
 						</div>
 					</div>
 				<h5 class="mt-3">Educational Information</h5>
 					<div class="row mt-3">
-						<div class="col-6">
+						<div class="col-md-6">
 							<label>Matric Number:</label>
 							<input class="form-control" type="text" name="mat" id="mat" disabled style="width: 100%">
 							<label>Current Level:</label>
 							<input class="form-control" type="text" name="lvl" disabled value="100" style="width: 100%">
 						</div>
-						<div class="col-6">
+						<div class="col-md-6">
 							<label>Faculty:</label>
 							<input class="form-control" type="text" name="fac" id="fac" disabled style="width: 100%">
 							<label>Depatment:</label>
@@ -160,6 +164,8 @@
 			$gdr=$col['gender'];
 			$dob=$col['userdate'];
 			$number=$col['id'];
+			$pn=$col['phonenumber'];
+			$em=$col['email'];
 			$fac=$col['faculty'];
 			$dept=$col['dept'];
 		}
@@ -172,6 +178,8 @@
 		echo "<script>mat.value='".$number."'</script>";
 		echo "<script>fac.value='".$fac."'</script>";
 		echo "<script>dept.value='".$dept."'</script>";
+		echo "<script>upn.value='".$pn."'</script>";
+		echo "<script>uem.value='".$em."'</script>";
 		echo "<script>dashname.innerHTML='".$lname.' '.$fname."'</script>";
 	}
 	else{

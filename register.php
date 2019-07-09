@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css">
 	<script type="text/javascript" src="bootstrap/dist/js/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="bootstrap/dist/js/bootstrap.js"></script>
-	<script type="text/javascript" src="jquery3.3.1.js"></script>
+
 </head>
 	
 
@@ -69,26 +69,71 @@
 				<h4 align="center" style="border-bottom: 1px solid green; padding: 10px;">Register Here</h4>
 				<div class="form mt-4">
 					<!-- <p id="success" align="center" class="bg-success" style="display: none; border-radius: 3px;">Registation successful. Proceed to <a href="login.php" class="text-white">Sign in</a></p> -->
+						<?php if(isset($success))
+					{ ?>
+					<p class="bg-success" style="border-radius: 5px; text-align: center; font-size: 13pt"><?php echo $success ?></p>
+				<?php } ?>
+				<?php if(isset($regfail))
+					{ ?>
+					<p class="bg-danger" style="border-radius: 5px; text-align: center; font-size: 15pt"><?php echo $regfail ?></p>
+				<?php } ?>
 					<form class="" action="registration.php" method="post" enctype="multipart/form-data">
 						<div class="row">
-							<div class="col-6">
+							<div class="col-md-6">
 						<label>Lastname:</label>
-						<input  class="form-control" type="text" name="lname"  required placeholder="Last Name">
+						<input  class="form-control" type="text" name="lname" id="ln"  placeholder="Last Name">
+						<?php if(isset($lncnb))
+						{ ?>
+							<p class="text-danger" id="mis"><?php echo $lncnb; ?></p>
+						<?php } ?>
 						<label>Firstname:</label>
-						<input  class="form-control" type="text" name="fname"  required placeholder="First Name">
+						<input  class="form-control" type="text" name="fname" id="fn"  placeholder="First Name">
+						<?php if(isset($fncnb))
+						{ ?>
+							<p class="text-danger" id="mis"><?php echo $fncnb; ?></p>
+						<?php } ?>
 						<label>Middlename:</label>
-						<input class="form-control"  type="text" name="mname"  placeholder="Middle Name">
+						<input class="form-control"  type="text" name="mname" id="mn" placeholder="Middle Name">
+						<?php if(isset($mncnb))
+						{ ?>
+							<p class="text-danger" id="mis"><?php echo $mncnb; ?></p>
+						<?php } ?>
 						<label>Date of Birth:</label>
-						<input  class="form-control" type="date" name="dob">
+						<input  class="form-control" type="date" name="dob" id="db">
+						<?php if(isset($dobcnb))
+						{ ?>
+							<p class="text-danger" id="mis"><?php echo $dobcnb; ?></p>
+						<?php } ?>
 						<label>Gender:</label><br>
-
-						<input type="radio" name="gender" value="Male" required  style="margin-right: 10px;">Male
-						<input type="radio" name="gender" value="Female"  required style="margin-left: 50px; margin-right: 10px">Female<br>
-						<label>Choose an account Picture:</label>
-						<input class="form-control-file"  type="file" name="userpix">
+						<input type="radio" name="gender" checked value="" style="display: none">
+						<input type="radio" name="gender" value="Male"   style="margin-right: 10px;">Male
+						<input type="radio" name="gender" value="Female"   style="margin-left: 50px; margin-right: 10px">Female
+						<?php if(isset($gdrcnb))
+						{ ?>
+							<p class="text-danger" id="mis"><?php echo $gdrcnb; ?></p>
+						<?php } ?>
+						<p><label>Phone Number:</label>
+						<input class="form-control"  type="text" name="upn" id="pn" placeholder="Phone Number"></p>
+						<?php if(isset($pnex))
+						{ ?>
+							<p class="text-danger" id="mis"><?php echo $pnex; ?></p>
+						<?php } ?>
+						<?php if(isset($pncnb))
+						{ ?>
+							<p class="text-danger" id="mis"><?php echo $pncnb; ?></p>
+						<?php } ?>
 							</div>
-							<div class="col-6">
-						
+							<div class="col-md-6">
+						<label>Email:</label>
+						<input class="form-control"   type="email" id="em" placeholder="E-mail" name="uem">
+						<?php if(isset($emex))
+						{ ?>
+							<p class="text-danger" id="mis"><?php echo $emex; ?></p>
+						<?php } ?>
+						<?php if(isset($emcnb))
+						{ ?>
+							<p class="text-danger" id="mis"><?php echo $emcnb; ?></p>
+						<?php } ?>
 						<label>Faculty:</label><br>
 						<select name="fac" id="faculty" onclick="selection()"  class="form-control">
 							<option selected="selected">Select</option>
@@ -101,11 +146,27 @@
 							<option selected>Select</option>
 						</select>
 						<label>Select a Username:</label>
-						<input class="form-control"  type="text" name="user" required  placeholder="Username">
+						<input class="form-control"  type="text" name="user" id="un"  placeholder="Username">
+						<?php if(isset($uscnb))
+						{ ?>
+							<p class="text-danger" id="mis"><?php echo $uscnb; ?></p>
+						<?php } ?>
+						<?php if(isset($nex))
+						{ ?>
+							<p class="text-danger" id="mis"><?php echo $nex; ?></p>
+						<?php } ?>
 						<label>Password:</label>
-						<input class="form-control"  type="Password" name="pwd"  required placeholder="Choose a Password">
+						<input class="form-control"  type="Password" name="pwd"   placeholder="Choose a Password">
+						<?php if(isset($pwcnb))
+						{ ?>
+							<p class="text-danger" id="mis"><?php echo $pwcnb; ?></p>
+						<?php } ?>
 						<label>Confirm Password:</label>
-						<input class="form-control"  type="Password" name="cpwd"  required placeholder="Confirm Password">
+						<input class="form-control"  type="Password" name="cpwd"   placeholder="Confirm Password">
+						<?php if(isset($pwdmis))
+						{ ?>
+							<p class="text-danger" id="mis"><?php echo $pwdmis; ?></p>
+						<?php } ?>
 					</div>
 					</div>
 					<div class="row">

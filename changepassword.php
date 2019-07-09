@@ -70,7 +70,7 @@
 					<li class="nav-item pl-3"><a href="#" class="text-white">Take a tour</a></li>
 					<li class="nav-item pl-3"><a href="#" class="text-white">Courses Offered</a></li>
 					<li class="nav-item pl-3"><a href="#" class="text-white" style="opacity: 0.9;">Student's Portal</a></li>
-					<li class="nav-item" style="position: absolute;right: 100px"><a href="login.php" class="text-white">Sign Out</a></li>
+					<li class="nav-item" style="position: absolute;right: 100px"><a href="signout.php" class="text-white">Sign Out</a></li>
 				</ul>
 			</div>
 		</div>
@@ -94,28 +94,34 @@
 						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="receipt.png" width="25px" style="margin-right: 10px">Receipt</a></h6>
 						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="result.png" width="25px" style="margin-right: 10px">CGPA</a></h6>
 						<h6 style="margin-bottom: 25px; border-bottom: 1px solid green"><a href=""><img src="pwd.png" width="25px" style="margin-right: 10px">Change Password</a></h6>
-						<h6 style=""><a href="login.php"><img src="signout.png" width="25px" style="margin-right: 10px">Sign Out</a></h6>
+						<h6 style=""><a href="signout.php"><img src="signout.png" width="25px" style="margin-right: 10px">Sign Out</a></h6>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-10">
-				<div><span id="toggler" style="color: green; font-size: 30pt; cursor: pointer">&#8801;</span>
+				<div><span id="toggler" style="color: green; font-size: 30pt; cursor: pointer;user-select:none;-moz-user-select:none">&#8801;</span>
 				</div>
 				<div class="form">
 					<form action="pwdchange.php" method="get">
+						<?php if(isset($ntmtch)){?>
+							<p class="bg-danger text-white" style="border-radius: 5px; text-align: center"> <?php echo $ntmtch ?></p>
+						<?php }?>
+						<?php if(isset($curinv)){?>
+							<p class="bg-danger text-white" style="border-radius: 5px; text-align: center"> <?php echo $curinv ?></p>
+						<?php }?>
 					<div class="row mt-3">
-						<div class="col-6">
+						<div class="col-md-6">
 							<input type="hidden" name="nc" id="nc">
 							<label>Current Password:</label>
-							<input class="form-control" type="password" name="cp" style="width: 100%" >
+							<input class="form-control" type="password" name="cp" required style="width: 100%">
 							<label>Reason for Changing:</label>
 							<input class="form-control" type="text" name="" id="rsn" style="width: 100%">
 						</div>
-						<div class="col-6">
+						<div class="col-md-6">
 							<label>New Password:</label>
-							<input class="form-control" type="password" name="newp" style="width: 100%">
+							<input class="form-control" type="password" name="newp" required style="width: 100%">
 							<label>Confirm New Password:</label>
-							<input class="form-control" type="password" name="cnewp" style="width: 100%" >
+							<input class="form-control" type="password" name="cnewp" required style="width: 100%" >
 						</div>
 					</div>
 					<div class="row">
